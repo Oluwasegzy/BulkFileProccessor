@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en" data-ng-app="app"> <!--<![endif]-->
+  <!-- BEGIN HEAD -->
+  <head>
+    <meta charset="utf-8" />
+    <title>FileProcessor | Upload</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Index Page for File processor" name="description" />
+    <meta content="Oluwasegun Idowu" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->          
+    <link href="assets2/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets2/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets2/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <!-- BEGIN PAGE LEVEL PLUGIN STYLES --> 
+    <link href="assets2/plugins/bootstrap-toastr/toastr.css" rel="stylesheet" type="text/css"/>
+    <link href="assets2/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets2/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="assets2/plugins/select2/select2_metro.css" />
+
+    <!-- END PAGE LEVEL PLUGIN STYLES -->
+
+    <!-- BEGIN THEME STYLES --> 
+    <link href="assets2/css/style-metronic.css" rel="stylesheet" type="text/css"/>
+    <!--    <link href="assets2/css/style.css" rel="stylesheet" type="text/css"/>-->
+    <link href="assets2/css/style-metronic.css" rel="stylesheet" type="text/css"/>
+    <link href="assets2/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="assets2/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="assets2/css/themes/red.css" rel="stylesheet" type="text/css" id="style_color"/>
+    <link href="assets2/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+    <link href="assets2/css/custom.css" rel="stylesheet" type="text/css"/>
+    <link href="assets2/css/plugins.css" rel="stylesheet" type="text/css"/>
+    <!-- END THEME STYLES -->
+    <!-- ANGULAR JS BEGIN -->
+    <!--script src="assets2/plugins/angular/angular.min.js"></script-->
+	    <script src="assets2/plugins/angular/angular.min.js"></script>
+    <script src="assets2/plugins/angular/angular-route.min.js"></script>
+    <script src="assets2/plugins/angular/ngRemoteValidate.js"></script>
+    <script src="assets2/plugins/angular/angular-animate.min.js"></script>
+    <script src="assets2/plugins/angular/angular-ui-router.min.js"></script>
+    <script src="assets2/plugins/angular/angular-sanitize.min.js"></script>
+    <script src="assets2/plugins/angular/ui-bootstrap-tpls-0.12.1.min.js"></script>      
+    <script src="assets2/plugins/angular/ui-utils.min.js"></script> 
+    <script src="assets2/plugins/angular/angular-messages.min.js"></script> 
+    <script src="assets2/plugins/angular/dirPagination.js"></script> 
+    <script src="app/app.js"></script>
+    <!-- ANGULAR JS END -->
+    <link rel="shortcut icon" href="favicon.ico" />
+  </head>
+  <!-- END HEAD -->
+
+  <!-- BEGIN BODY -->
+  <body ng-controller="appController">  
+
+    <!-- BEGIN HEADER -->
+    <div class="header navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+          <button class="navbar-toggle btn navbar-btn" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- END RESPONSIVE MENU TOGGLER -->
+          <!-- BEGIN LOGO (you can use logo image instead of text)-->
+          <a class="navbar-brand logo-v1" href="index.html">
+            <img src="assets2/img/pics/logo.png" id="logoimg" alt="" >
+            
+          </a>
+          <!-- END LOGO -->
+        </div>
+
+        <!-- BEGIN TOP NAVIGATION MENU -->
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a class="dropdown-toggle" href="#/upload">
+                Home
+              </a>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" href="#/review">
+                Review Upload
+              </a>
+            </li>
+
+          </ul>                           
+        </div>
+        <!-- BEGIN TOP NAVIGATION MENU -->
+      </div>
+    </div>
+    <!-- END HEADER -->
+
+    <!-- BEGIN PAGE CONTAINER -->  
+    <div class="page-container">
+    
+      <!-- BEGIN CONTAINER -->   
+      <div class="container">
+        <div class="row">
+          <div style="margin-top: 10px;"></div>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-8 selfserviceForms">
+
+          <div class="portlet">
+            <div class="portlet-body form">
+                  <div ng-if='isRouteLoading'>
+          <div id="loading">
+            <img id="loading-image" src="assets2/img/ajax-loading.gif" alt="Loading..." />
+          </div>
+        </div>
+        <div ng-view>
+
+        </div>
+
+                        
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+      <!-- END CONTAINER -->
+      
+    </div>
+    <br/>  <br/>  <br/>  <br/>
+    <!-- END PAGE CONTAINER -->
+    
+    <!-- BEGIN FOOTER -->
+    <div class="footer2">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-sm-4 space-mobile">       
+
+          </div>
+          <div class="col-md-4 col-sm-4 space-mobile">
+                                               
+          </div>
+          <div class="col-md-4 col-sm-4">
+                                                                                    
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END FOOTER -->
+
+    <!-- BEGIN COPYRIGHT -->
+    <div class="copyright">
+      <div class="container">
+        <div class="row">
+		<div class="col-md-2"></div>
+          <div class="col-md-8 text-center">
+            <p>
+              <span>2017 © ProgrssSoft. ALL Rights Reserved.</span> 
+              <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+            </p>
+          </div>
+        <div class="col-md-2"></div>
+		</div>
+      </div>
+    </div>
+    <!-- END COPYRIGHT -->
+
+    <!-- Load javascripts at bottom, this will reduce page load time -->
+    <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
+    <!--[if lt IE 9]>
+    <script src="assets2/plugins/respond.min.js"></script>  
+    <![endif]-->  
+    <script src="assets2/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="assets2/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+    <script src="assets2/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>      
+    <script type="text/javascript" src="assets2/plugins/hover-dropdown.js"></script>
+    <script type="text/javascript" src="assets2/plugins/back-to-top.js"></script>
+    <script src="assets2/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js" type="text/javascript" ></script>
+    <script src="assets2/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="assets2/plugins/jquery.blockui.min.js" type="text/javascript"></script>  
+    <script src="assets2/plugins/jquery.cookie.min.js" type="text/javascript"></script>
+    <script src="assets2/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
+    <script src="assets2/plugins/bootstrap-toastr/toastr.js" type="text/javascript"></script>
+    <script src="assets2/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script> 
+    <!-- END CORE PLUGINS -->
+
+    <!-- BEGIN PAGE LEVEL JAVASCRIPTS(REQUIRED ONLY FOR CURRENT PAGE) -->
+    <script type="text/javascript" src="assets2/plugins/fancybox/source/jquery.fancybox.pack.js"></script>  
+    <!--script type="text/javascript" src="assets2/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="assets2/plugins/jquery-validation/dist/additional-methods.min.js"></script-->
+    <script type="text/javascript" src="assets2/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+    <script type="text/javascript" src="assets2/plugins/select2/select2.min.js"></script>
+
+    <script src="assets2/scripts/app.js"></script>
+    <script src="assets2/scripts/app.js"></script>
+    <script src="assets2/scripts/custom.js"></script>
+    <script src="assets2/scripts/form-wizard.js"></script> 
+    <script src="assets2/scripts/index.js"></script>    
+    <!-- END PAGE LEVEL JAVASCRIPTS(REQUIRED ONLY FOR CURRENT PAGE) -->
+
+    <script type="text/javascript">
+                                    jQuery(document).ready(function () {
+                                        App.init();
+										   //    App.initBxSlider();
+          //Index.initRevolutionSlider();
+                                        //FormWizard.init();
+//                                    UIToastr.init();
+                                    });
+    </script>
+    <!-- END PAGE LEVEL JAVASCRIPTS -->
+  </body>
+  <!-- END BODY -->
+</html>
+
+

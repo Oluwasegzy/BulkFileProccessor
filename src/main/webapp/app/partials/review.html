@@ -1,0 +1,85 @@
+<div class="row">
+  <div class="col-md-12">
+    <!-- BEGIN PAGE TITLE-->
+    <h3 class="page-title">
+      Review File
+    </h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-1">
+    
+  </div>
+  <div class="col-md-10">
+  
+          <div class="portlet-body form">
+                  <div class="form-group right">
+				    <div class="row">
+					 <div class="form-group">
+					  <form class="form-inline" role="form">
+					 <div class="col-md-3">
+                       <label class=" control-label">File Name</label>
+	                 </div>
+		
+				   <div class="col-md-3">
+				    <select class="form-control input-sm" ng-model="reviewType">
+                        <option ng-selected="true" value="valid">Valid Records</option>
+                        <option value="invalid" >Invalid Records</option>
+                      </select>
+					  </div>
+					  <div class="col-md-3">
+                    <input type="text" class="form-control" ng-model="fileName" tooltip="File Name"/>
+					</div>
+				
+					 <div class="col-md-3">
+					<button type="submit" class="btn btn-primary" ng-click="review()"><i class="icon-search"></i>Submit</button>
+					</div>
+					</form>
+				   </div>
+					</div>
+					<div class="row">
+					   <div class="caption"><i class="icon-globe"></i>Total Number of records:: {{data.length}}</div>
+					<div>
+					<div class="row">
+					   <div class="caption"><i><b>N.B All records might not display until few seconds after upload.. batch Insertions might be in progress</b></i></div>
+					<div>
+                    <div class="col-md-12">
+                      <table class="table table-striped table-bordered table-hover table-condensed flip-content dataTable" >
+                        <thead class="flip-content">
+                          <tr>
+						  <th>S/N</th>
+                            <th>Deal Unique id</th>
+                            <th>Ordering Currency</th>
+                            <th>To Currency</th>
+                             <th>Deal Time</th>
+                            <th>Deal Amount</th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat="pv in data">
+						  <td>{{$index + 1}} 
+                            <td>{{pv.dealUniqueId}}</td>
+                            <td>{{pv.fromIsoCode}}</td>
+                            <td>{{pv.toIsoCode}}</td>
+                         <td>{{pv.dealTime}}</td>
+                            <td>{{pv.dealAmount}}</td>
+            
+                            </td>
+                          </tr>
+                          
+                        </tbody>
+                      </table>
+    
+                    </div>
+                  </div>
+                </div>
+      
+    </div>
+    <div class="col-md-1">
+  </div>
+  
+</div>
+
+
+
