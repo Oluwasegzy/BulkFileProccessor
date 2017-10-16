@@ -65,12 +65,18 @@ public class FileService extends DaoImpl<DealsCount> {
 		long startMilliSec = cal.getTimeInMillis();
 		log.info("entity manager " + em);
 		em = this.getEntityManager(true);
-		List<UploadedFileLog> list = em.createQuery("select e from UploadedFileLog e where e.fileName=:fileName")
-				.setParameter("fileName", fileName).getResultList();
-		if (!list.isEmpty()) {
+	UploadedFileLog res= null;
+	try {
+		log.info("checking if upload exist...");
+	res = (UploadedFileLog)em.createQuery("select e from UploadedFileLog e where e.fileName=:fileName")
+				.setParameter("fileName", fileName).getSingleResult();
+	}catch(Exception e) {
+		
+	}
+	log.info("exist ..." + (res!=null));
+		if (res!=null) {
 			em.close();
 			throw new Exception("File '" + fileName + "' already uploaded");
-
 		}
 		log.info("here...");
 
@@ -205,7 +211,7 @@ public class FileService extends DaoImpl<DealsCount> {
 
 		private String fileName;
 		private List<String[]> allLines;
-		private final int BATCH_INSERT_RECORD = 30000;
+		private final int BATCH_INSERT_RECORD = 50000;
 
 		FileProcessCallable(List<String[]> allLines, String file) {
 			this.allLines = allLines;

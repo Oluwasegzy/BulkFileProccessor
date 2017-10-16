@@ -68,15 +68,7 @@ public class RestTest{
 	}
 	
 	
-	@Test
-	public void testZFileLogInserted() {
-		//assert that a log of the upload has been inserted.. insertions to the valid and invalid table happens afterwads
-		String response=get("/fileprocessor/path/endpoint/fileLog/" + FILE_NAME).thenReturn().asString();
-		Type type = new TypeToken<List<ValidRecord>>() {
-        }.getType();
-        List<ValidRecord> data = new Gson().fromJson(response, type);
-		assertThat(data.size(), is(equalTo(new Integer(1))));
-	}
+
 	
 	
 

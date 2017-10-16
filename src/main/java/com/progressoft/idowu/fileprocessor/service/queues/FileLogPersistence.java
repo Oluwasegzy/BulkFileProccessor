@@ -24,8 +24,9 @@ public class FileLogPersistence implements Runnable {
 	@Override
 	public void run() {
 		FileService s = new FileService(UploadedFileLog.class);
-	
+	        
 			EntityManager em = s.getEntityManager(true);
+			em.getTransaction().begin();
 			UploadedFileLog fileLog = new UploadedFileLog();
 			fileLog.setFileName(fileName);
 			em.persist(fileLog);

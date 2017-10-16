@@ -113,7 +113,7 @@ public class RestPath {
 		List<UploadedFileLog> list = new ArrayList<>();
 		FileService service = new FileService(DealsCount.class);
 		try {
-			log.info("finding invalid ");
+			log.info("finding filelog ");
 			list = service.retrieveFileLog(fileName);
 			log.info("count " + list.size());
 		} catch (Exception e) {
