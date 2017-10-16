@@ -233,10 +233,9 @@ public class FileService extends DaoImpl<DealsCount> {
 				}
 				
 				Date timeStamp=null;
-				log.info("on line ...." + count);
 				try {
 				cal.setTimeInMillis(new Long(line[3]));
-			   
+			
 				timeStamp = cal.getTime();
 				}catch(Exception e) {
 					
@@ -247,8 +246,6 @@ public class FileService extends DaoImpl<DealsCount> {
 				}catch(Exception e) {
 					
 				}
-				log.info("timeStamp ...." + timeStamp);
-				log.info("amount ...." + amount);
 				if (timeStamp==null || amount==null) {
 					
 					baseRecord = new InvalidRecord();
