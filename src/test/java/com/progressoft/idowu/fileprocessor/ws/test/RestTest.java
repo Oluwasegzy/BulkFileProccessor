@@ -38,37 +38,57 @@ public class RestTest{
 	}
 
 
-	@Test
-	public void testEndpoint() {
-		//assert that the endpoint is up and running
-		post("/fileprocessor/path/endpoint/upload/file.csv").then()
-		.assertThat().statusCode(415);
-	}
-
-
+//	@Test
+//	public void testEndpoint() {
+//		//assert that the endpoint is up and running
+//		post("/fileprocessor/path/endpoint/upload/file.csv").then()
+//		.assertThat().statusCode(415);
+//	}
+//
+//
+//	
+//	@Test
+//	public void testUpload() {
+//		InputStream  stream = getClass().getResourceAsStream("/" + FILE_NAME);
+//		
+//		String response = given().multiPart("file", FILE_NAME, stream).
+//		post("/fileprocessor/path/endpoint/upload/" + FILE_NAME).thenReturn().asString();
+//		try {
+//		stream.close();
+//		}catch(IOException e) {
+//			
+//		}
+//		Type type = new TypeToken<Map<String, Object>>() {
+//        }.getType();
+//       Map<String, Object> data = new Gson().fromJson(response,type);
+//       //assert that upload was successful
+//       assertThat((String)data.get("responseCode"),is(equalTo("0")));
+//       //assert that upload happened in less than 5 seconds
+//       assertThat((Double)data.get("uploadTime"),is(lessThan(new Double(5000))));
+//	}
+//	
+    
+	
+	//NOTE THE FOLLOWING TEST 
+	// COMMENTED SO THAT IT CAN BE TESTED WHEN INSERTIONS ARE COMPLETE
 	
 	@Test
-	public void testUpload() {
-		InputStream  stream = getClass().getResourceAsStream("/" + FILE_NAME);
+	public void testSumOfValidAndInvalidRecordsIs10000() {
+		//assert that sum of valid and invalid records is 10000
 		
-		String response = given().multiPart("file", FILE_NAME, stream).
-		post("/fileprocessor/path/endpoint/upload/" + FILE_NAME).thenReturn().asString();
-		try {
-		stream.close();
-		}catch(IOException e) {
-			
-		}
-		Type type = new TypeToken<Map<String, Object>>() {
+		// PLS DO THIS WHEN ALL RECORDS are inserted into the DB
+		String response=get("/fileprocessor/path/endpoint/reviewInvalid/" + FILE_NAME).thenReturn().asString();
+		Type type = new TypeToken<List<InvalidRecord>>() {
         }.getType();
-       Map<String, Object> data = new Gson().fromJson(response,type);
-       //assert that upload was successful
-       assertThat((String)data.get("responseCode"),is(equalTo("0")));
-       //assert that upload happened in less than 5 seconds
-       assertThat((Double)data.get("uploadTime"),is(lessThan(new Double(5000))));
+        List<InvalidRecord> invalid = new Gson().fromJson(response, type);
+        
+        response=get("/fileprocessor/path/endpoint/reviewValid/" + FILE_NAME).thenReturn().asString();
+		 type = new TypeToken<List<ValidRecord>>() {
+        }.getType();
+        List<ValidRecord> valid = new Gson().fromJson(response, type);
+        int sum = valid.size() + invalid.size();
+		assertThat(sum, is(equalTo(new Integer(100000))));
 	}
-	
-	
-
 	
 	
 
